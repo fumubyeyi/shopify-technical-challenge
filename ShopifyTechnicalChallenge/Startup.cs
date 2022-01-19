@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ShopifyTechnicalChallenge.App_Data;
+using ShopifyTechnicalChallenge.Models;
 
 namespace ShopifyTechnicalChallenge
 {
@@ -21,12 +21,13 @@ namespace ShopifyTechnicalChallenge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<InventoryContext>(options => options.UseSqlite(Configuration.GetConnectionString("TestConnection")));
+            services.AddDbContext<InventoryContext>(options => options.UseSqlite(Configuration.GetConnectionString("InventoryDBConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InventoryContext dataContext)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -37,6 +38,8 @@ namespace ShopifyTechnicalChallenge
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            dataContext.Database.EnsureCreated();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

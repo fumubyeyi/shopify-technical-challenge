@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.EntityFrameworkCore;
-using ShopifyTechnicalChallenge.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace ShopifyTechnicalChallenge.App_Data
+namespace ShopifyTechnicalChallenge.Models
 {
     public class InventoryContext : DbContext
     {

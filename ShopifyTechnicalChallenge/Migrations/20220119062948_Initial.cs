@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ShopifyTechnicalChallenge.App_Data
+namespace ShopifyTechnicalChallenge.Migrations
 {
     public partial class Initial : Migration
     {
@@ -26,7 +26,7 @@ namespace ShopifyTechnicalChallenge.App_Data
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Category = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false)
@@ -63,8 +63,8 @@ namespace ShopifyTechnicalChallenge.App_Data
 
             migrationBuilder.InsertData(
                 table: "Inventory",
-                columns: new[] { "Id", "CategoryId", "Description", "Name", "Price", "Quantity" },
-                values: new object[] { 1, 1, "Item 1", "Item 1", 19.989999999999998, 10 });
+                columns: new[] { "Id", "Category", "Description", "Name", "Price", "Quantity" },
+                values: new object[] { 1, "Home", "Item 1", "Item 1", 19.989999999999998, 10 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

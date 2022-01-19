@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using ShopifyTechnicalChallenge.App_Data;
 using ShopifyTechnicalChallenge.Models;
 
 namespace ShopifyTechnicalChallenge.Controllers
