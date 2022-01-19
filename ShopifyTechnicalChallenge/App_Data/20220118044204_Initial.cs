@@ -13,11 +13,11 @@ namespace ShopifyTechnicalChallenge.App_Data
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2022, 1, 17, 23, 42, 3, 517, DateTimeKind.Local).AddTicks(9330))
                 },
                 constraints: table =>
                 {

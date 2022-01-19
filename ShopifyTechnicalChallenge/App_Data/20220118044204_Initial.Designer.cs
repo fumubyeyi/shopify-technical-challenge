@@ -9,7 +9,7 @@ using ShopifyTechnicalChallenge.Models;
 namespace ShopifyTechnicalChallenge.App_Data
 {
     [DbContext(typeof(InventoryContext))]
-    [Migration("20220117175741_Initial")]
+    [Migration("20220118044204_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,9 +30,10 @@ namespace ShopifyTechnicalChallenge.App_Data
                     b.Property<DateTime>("LastModified")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasDefaultValue(new DateTime(2022, 1, 17, 23, 42, 3, 517, DateTimeKind.Local).AddTicks(9330));
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 

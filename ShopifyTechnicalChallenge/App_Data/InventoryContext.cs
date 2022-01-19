@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using ShopifyTechnicalChallenge.Models;
 
-namespace ShopifyTechnicalChallenge.Models
+namespace ShopifyTechnicalChallenge.App_Data
 {
     public class InventoryContext : DbContext
     {
         public DbSet<Inventory> Inventory { get; set; }
+
+        public DbSet<Category> Category { get; set; }
 
         public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
         {
@@ -19,19 +22,13 @@ namespace ShopifyTechnicalChallenge.Models
             modelBuilder.Entity<Inventory>(entity =>                
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Id);
-                entity.HasIndex(e => e.Name).IsUnique();
-                entity.Property(e => e.Name).HasMaxLength(100);
-                entity.Property(e => e.Description);
-                entity.Property(e => e.Price);
-                entity.Property(e => e.Quantity);
-                entity.Property(e => e.LastModified).HasDefaultValueSql("CURRENT_TIMESTAMP");
-
+                
                 entity.HasData(new Inventory
                 {
                     Id = 1,
                     Name = "Item 1",
-                    Description = "Item 1",              
+                    Description = "Item 1",
+                    Category = "Home",
                     Price = 19.99,
                     Quantity = 10
                 });
@@ -39,8 +36,26 @@ namespace ShopifyTechnicalChallenge.Models
             });
 
 
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.HasData(
+                    new Category { Id = 1, Name = "Food" },
+                    new Category { Id = 2, Name = "Clothing" },
+                    new Category { Id = 3, Name = "Beauty" },
+                    new Category { Id = 4, Name = "Home" },
+                    new Category { Id = 5, Name = "Electronics" }
+                    );
+
+            });
+
+
             base.OnModelCreating(modelBuilder);
         }
+
+
    
     }
 }
