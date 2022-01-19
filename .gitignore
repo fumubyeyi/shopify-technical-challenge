@@ -407,4 +407,4 @@ ASALocalRun/
 # App setting
 .json
 .db
-.Migrations
+Migrations/
