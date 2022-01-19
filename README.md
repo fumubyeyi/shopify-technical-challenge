@@ -1,4 +1,4 @@
-# ASP.NET Core MVC - Inventory CRUD App
+# Inventory CRUD Web Application
 
 This is a simple CRUD application.
 
@@ -11,7 +11,8 @@ The instructions for this application can be found with the link below:
 
 ## Built with
 
-* .Net Core as a framework
+* Asp.Net Core as a framework
+* MVC pattern
 * Entity Framework Core for the ORM 
 * Sqlite for a relational database
 
