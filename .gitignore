@@ -404,7 +404,12 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+<<<<<<< HEAD
 # App setting
 .json
 .db
 Migrations/
+=======
+# App settings json
+.json
+>>>>>>> a67154c1a6b4cb9ffbfaa8a9872bb7718362ea62
